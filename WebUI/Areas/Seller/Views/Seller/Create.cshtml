@@ -1,0 +1,182 @@
+﻿@model Persistence.ViewModels.SellerViewModel
+@using Utility.Extensions
+@using Persistence.Helpers
+
+@{ ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<h2 class="text-info">Add Vehicle</h2>
+<form method="post" enctype="multipart/form-data" asp-action="Create">
+    <div class="form-group row">
+        @*<div class="col-2">
+                <label asp-for="Seller.SellerId"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Seller.SellerId" class="hidden" />
+                <span asp-validation-for="Seller.SellerId" class="text-danger"></span>
+            </div>*@
+        <div class="form-group row">
+            <label asp-for="Photo" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <div class="custom-file">
+                    <input multiple asp-for="Photo" class="form-control custom-file-input">
+                    <label class="custom-file-label">Choose File...</label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Seller.Name"></label>
+        </div>
+
+        <div class="col-4">
+            <input asp-for="Seller.Name" class="form-control" />
+            <span asp-validation-for="Seller.Name" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Seller.Title"></label>
+        </div>
+
+        <div class="col-4">
+            <Input asp-for="Seller.Title" class="form-control" />
+            <span asp-validation-for="Seller.Title" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Seller.SellerEmail"></label>
+        </div>
+
+        <div class="col-4">
+            <Input asp-for="Seller.SellerEmail" class="form-control" />
+            <span asp-validation-for="Seller.SellerEmail" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Seller.Age"></label>
+        </div>
+
+        <div class="col-4">
+            <Input asp-for="Seller.Age" class="form-control" />
+            <span asp-validation-for="Seller.Age" class="text-danger"></span>
+        </div>
+        <div class="col-1">
+            <label asp-for="Seller.Sex"></label>
+        </div>
+
+        <div class="col-2">
+            <input asp-for="Seller.Sex" class="form-control" />
+            <span asp-validation-for="Seller.Sex" class="text-danger"></span>
+        </div>
+
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Seller.Company"></label>
+        </div>
+
+        <div class="col-4">
+            <input asp-for="Seller.Company" class="form-control" />
+            <span asp-validation-for="Seller.Company" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Seller.Address"></label>
+        </div>
+
+        <div class="col-4">
+            <Input asp-for="Seller.Address" class="form-control" />
+            <span asp-validation-for="Seller.Address" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Seller.SellerPhone"></label>
+        </div>
+
+        <div class="col-4">
+            <Input asp-for="Seller.SellerPhone" class="form-control" />
+            <span asp-validation-for="Seller.SellerPhone" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Seller.City"></label>
+        </div>
+
+        <div class="col-4">
+            <Input asp-for="Seller.City" class="form-control" />
+            <span asp-validation-for="Seller.City" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Seller.Country"></label>
+        </div>
+
+        <div class="col-4">
+            <Input asp-for="Seller.Country" class="form-control" />
+            <span asp-validation-for="Seller.Country" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Seller.PhoneNo2"></label>
+        </div>
+
+        <div class="col-4">
+            <Input asp-for="Seller.PhoneNo2" class="form-control" />
+            <span asp-validation-for="Seller.PhoneNo2" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Seller.PostalCode"></label>
+        </div>
+
+        <div class="col-4">
+            <Input asp-for="Seller.PostalCode" class="form-control" />
+            <span asp-validation-for="Seller.PostalCode" class="text-danger"></span>
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Create" />
+        @if (User.IsInRole(Roles.Admin) || User.IsInRole(Roles.Executive))
+        {
+
+            <a asp-action="Index" class="btn btn-success">Back</a>
+        }
+        else
+        {
+            <div class="form-group">
+
+                <a asp-area="Customer" asp-controller="Home" asp-action="Index" class="btn btn-success">Back to Home</a>
+            </div>
+        }
+    </div>
+    @if (TempData["Success"] != null)
+    {
+        <p class="alert alert-success" id="successMessage">@TempData["Success"]</p>
+    }
+
+    @section Scripts {
+        <script>
+            $(document).ready(function () {
+                $('.custom-file-input').on("change", function () {
+                    var fileName = $(this).val().split("\\").pop();
+                    $(this).next('.custom-file-label').html(fileName);
+                });
+            });
+
+        </script>
+    }
+</form>
+

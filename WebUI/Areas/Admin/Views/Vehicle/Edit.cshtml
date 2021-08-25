@@ -1,0 +1,150 @@
+﻿
+@model Persistence.ViewModels.VehicleViewModel
+@using Utility.Extensions
+@{ ViewData["Title"] = "Create";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<script>$(document).ready(function () {
+        var MakeDDL = $("#Make");
+        var ModelDDL = $("#Model");
+        //ModelDDL.prop('disabled', true);
+
+        MakeDDL.change(function () {
+            if ($(this).val() == "0") {
+                ModelDDL.prop('disabled', true);
+                ModelDDL.val("0");
+            }
+            else {
+                $.ajax({
+                    url: "/api/models/" + $(this).val(),
+                    method: "get",
+                    success: function (data) {
+                        ModelDDL.prop('disabled', false);
+                        console.log("Success:");
+                        ModelDDL.empty();
+                        ModelDDL.append($('<option/>', { value: '0', text: '--Select Model--' }));
+                        $(data).each(function (index, item) {
+                            ModelDDL.append($('<option/>', { value: item.id, text: item.name}));
+                        });
+                    }
+                });
+            }
+        });
+
+    });</script>
+<br />
+<h2 class="text-info">Add Bike</h2>
+<form method="post" enctype="multipart/form-data" asp-action="Edit">
+    <input hidden asp-for="Vehicle.Id" />
+    <input hidden asp-for="Vehicle.ImagePath" />
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Makes"></label>
+        </div>
+        <div class="col-4">
+            <select asp-for="Vehicle.MakeID" asp-items="Model.Makes.ToSelectListItem()" class="form-control" id="Make"></select>
+            <span asp-validation-for="Vehicle.MakeID" class="text-danger"></span>
+        </div>
+        <div class="col-auto">
+            <label asp-for="Vehicle.ImagePath"></label>
+        </div>
+        <div class="col-3">
+            <input type="file" name="files" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Models"></label>
+        </div>
+
+        <div class="col-4">
+            <select asp-for="Vehicle.ModelID" asp-items="Model.Models.ToSelectListItem()" class="form-control" id="Model"></select>
+            <span asp-validation-for="Vehicle.ModelID" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Vehicle.Year"></label>
+        </div>
+
+        <div class="col-4">
+            <Input asp-for="Vehicle.Year" class="form-control" />
+            <span asp-validation-for="Vehicle.Year" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Vehicle.Mileage"></label>
+        </div>
+
+        <div class="col-4">
+            <Input asp-for="Vehicle.Mileage" class="form-control" />
+            <span asp-validation-for="Vehicle.Mileage" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Vehicle.Price"></label>
+        </div>
+
+        <div class="col-4">
+            <Input asp-for="Vehicle.Price" class="form-control" />
+            <span asp-validation-for="Vehicle.Price" class="text-danger"></span>
+        </div>
+        <div class="col-1">
+            <label asp-for="Vehicle.Currency"></label>
+        </div>
+
+        <div class="col-2">
+            <select asp-for="Vehicle.Currency" asp-items="Model.Currencies.ToSelectListItem()" class="form-control"></select>
+            <span asp-validation-for="Vehicle.Currency" class="text-danger"></span>
+        </div>
+
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Vehicle.Features"></label>
+        </div>
+
+        <div class="col-4">
+            <textarea asp-for="Vehicle.Features" class="form-control"></textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Vehicle.SellerName"></label>
+        </div>
+
+        <div class="col-4">
+            <Input asp-for="Vehicle.SellerName" class="form-control" />
+            <span asp-validation-for="Vehicle.SellerName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Vehicle.SellerEmail"></label>
+        </div>
+
+        <div class="col-4">
+            <Input asp-for="Vehicle.SellerEmail" class="form-control" />
+            <span asp-validation-for="Vehicle.SellerEmail" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Vehicle.SellerPhone"></label>
+        </div>
+
+        <div class="col-4">
+            <Input asp-for="Vehicle.SellerPhone" class="form-control" />
+            <span asp-validation-for="Vehicle.SellerPhone" class="text-danger"></span>
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Update" />
+        <a asp-action="Index" class="btn btn-success">Back</a>
+    </div>
+</form>
+
+

@@ -1,0 +1,131 @@
+﻿@model Persistence.ViewModels.SellerViewModel
+@using Utility.Extensions
+@{ ViewData["Title"] = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+<br />
+<h2 class="text-info">Vehicle Detail</h2>
+<form>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Seller.SellerId"></label>
+        </div>
+
+        <div class="col-4">
+            <Input disabled="disabled" asp-for="Seller.SellerId" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Seller.Name"></label>
+        </div>
+
+        <div class="col-4">
+            <Input disabled="disabled" asp-for="Seller.Name" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Seller.Title"></label>
+        </div>
+
+        <div class="col-4">
+            <Input disabled="disabled" asp-for="Seller.Title" class="form-control" />
+        </div>
+        <div class="col-1">
+            <label asp-for="Seller.SellerEmail"></label>
+        </div>
+
+        <div class="col-2">
+            <select disabled="disabled" asp-for="Seller.SellerEmail" class="form-control"></select>
+        </div>
+
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Seller.Age"></label>
+        </div>
+
+        <div class="col-4">
+            <textarea disabled="disabled" asp-for="Seller.Age" class="form-control"></textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Seller.Sex"></label>
+        </div>
+
+        <div class="col-4">
+            <Input disabled="disabled" asp-for="Seller.Sex" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Seller.Company"></label>
+        </div>
+
+        <div class="col-4">
+            <Input disabled="disabled" asp-for="Seller.Company" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Seller.Address"></label>
+        </div>
+
+        <div class="col-4">
+            <Input disabled="disabled" asp-for="Seller.Address" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Seller.SellerPhone"></label>
+        </div>
+
+        <div class="col-4">
+            <Input disabled="disabled" asp-for="Seller.SellerPhone" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Seller.City"></label>
+        </div>
+
+        <div class="col-4">
+            <Input disabled="disabled" asp-for="Seller.City" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Seller.Country"></label>
+        </div>
+
+        <div class="col-4">
+            <Input disabled="disabled" asp-for="Seller.Country" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Seller.PhoneNo2"></label>
+        </div>
+
+        <div class="col-4">
+            <Input disabled="disabled" asp-for="Seller.PhoneNo2" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Seller.PostalCode"></label>
+        </div>
+
+        <div class="col-4">
+            <Input disabled="disabled" asp-for="Seller.PostalCode" class="form-control" />
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <a asp-action="Index" class="btn btn-success">Back</a>
+    </div>
+</form>
+
+
+
