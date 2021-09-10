@@ -21,12 +21,12 @@
             </div>
 
             <div class="w3-col m2">
-                <label><i class="bi bi-person-badge"></i>Make </label>
+                <label><i class="bi bi-person-badge"></i>Model </label>
                 <input class="w3-input w3-border" type="text" placeholder="Model Name" name="searchString" value="@ViewBag.CurrentFilter" />
             </div>
 
             <div class="w3-col m2">
-                <label><i class="bi bi-person-badge"></i>Make </label>
+                <label><i class="bi bi-person-badge"></i>Year </label>
                 <input class="w3-input w3-border" type="date" placeholder="Year" name="searchString" value="@ViewBag.CurrentFilter" />
             </div>
 
@@ -96,7 +96,7 @@
 <td class="text-right">
     <div class="btn-group" role="group">
         <a asp-area="Customer" asp-controller="home" asp-action="View" asp-route-id="@item.Id"
-           class="btn btn-primary m-1"><i class="fas fa-search-plus"></i></a>
+           class="btn btn-primary m-1"><i class="fas fa-binoculars"></i></a>
         @*<a type="button" class="btn btn-primary" href="@Url.Action("View/"+item.Id)"><i class="fas fa-search-plus"></i></a>*@
     </div>
 </td>}
@@ -107,39 +107,4 @@
     </div>
 </div>
 
-
-
-<div class="row">
-    <div class="card" style="width:20em;margin:10px;">
-        <img src="" class="card-img-top" />
-        <div class="card-body">
-            <div class="card-title">
-                <h2></h2>
-
-            </div>
-            <div class="card-text">
-                <p></p>
-            </div>
-            <a href="#" class="btn btn-primary">More</a>
-        </div>
-    </div>
-</div>
-
-
 <script src="~/lib/jquery//dist/jquery.js"></script>
-<script type="text/javascript">
-    $('.card').hover(
-        function () {
-            $(this).animate({
-                marginTop: "-=1%",
-                marginBottom: "+=1%"
-            }, 300)
-        },
-        function () {
-            $(this).animate({
-                marginTop: "-= 1%",
-                marginBottom: "+= 1%"
-            })
-        }
-    )
-</script>
